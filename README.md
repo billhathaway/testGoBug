@@ -1,5 +1,8 @@
-Different behavior observed with Go 1.2.2 and 1.3 on OSX
+This turned out to be https://code.google.com/p/go/issues/detail?id=8325
 ==
+
+Different behavior observed with Go 1.2.2 and 1.3 on OSX
+--
 
 // go test passes on 1.3 if chars in main.go is changed to var OR the length of
 // the chars string is 1,2,4,7,8  and fails with char being a const with len 3,5,6,9
