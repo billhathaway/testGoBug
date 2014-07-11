@@ -1,13 +1,14 @@
 package main
 
 import "fmt"
-import "crypto/rand"
 
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 func makeRandomMessageV1(length int) string {
 	bytes := make([]byte, length)
-	rand.Read(bytes)
+	for i, _ := range bytes {
+		bytes[i] = byte(i)
+	}
 	for i, b := range bytes {
 		index := b % byte(len(chars)) // this line is a no-op
 		_ = index                     // since we throw it away
@@ -17,7 +18,9 @@ func makeRandomMessageV1(length int) string {
 }
 func makeRandomMessageV2(length int) string {
 	bytes := make([]byte, length)
-	rand.Read(bytes)
+	for i, _ := range bytes {
+		bytes[i] = byte(i)
+	}
 	for i, b := range bytes {
 		bytes[i] = chars[b%byte(len(chars))]
 	}
