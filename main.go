@@ -1,22 +1,11 @@
 package main
 
-import "fmt"
+// this passes on 1.3 if changed to var OR the length of
+// the chars string is 1,2,4,7,8  fails being var with len 3,5,6,9
+const chars = "ABCD"
 
-const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-func makeRandomMessageV1(length int) string {
-	bytes := make([]byte, length)
-	for i, _ := range bytes {
-		bytes[i] = byte(i)
-	}
-	for i, b := range bytes {
-		index := b % byte(len(chars)) // this line is a no-op
-		_ = index                     // since we throw it away
-		bytes[i] = chars[b%byte(len(chars))]
-	}
-	return string(bytes)
-}
-func makeRandomMessageV2(length int) string {
+// makeString generates a string consisting only of letters from chars
+func makeString(length int) string {
 	bytes := make([]byte, length)
 	for i, _ := range bytes {
 		bytes[i] = byte(i)
@@ -28,6 +17,4 @@ func makeRandomMessageV2(length int) string {
 }
 
 func main() {
-	fmt.Printf("v1=[%x]\n", makeRandomMessageV1(10))
-	fmt.Printf("v2=[%x]\n", makeRandomMessageV2(10))
 }
